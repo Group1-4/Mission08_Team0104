@@ -12,7 +12,7 @@ public class Task
     
     public DateTime DueDate { get; set; }
     
-    public string Quandrant { get; set; }
+    public string Quadrant { get; set; }
 
     [ForeignKey("CategoryId")]
     public int CategoryId { get; set; }
