@@ -16,4 +16,9 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    public IActionResult ViewTasks() /// JUST TESTING A PULL REQUEST HERE TO MAKE SURE MY BRANCH WORKS --JEFF
+    {
+        return View(); ///TESTING ONLY
+    }
 }
