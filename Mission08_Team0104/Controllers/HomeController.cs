@@ -16,4 +16,8 @@ public class HomeController : Controller
         return View(Quadrant);
     }
 
+    public IActionResult AddTask()
+    {
+        return View();
+    }
 }
