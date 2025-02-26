@@ -3,21 +3,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission08_Team0104.Models;
 
-public class Task
+public class ToDoTask
 {
     [Key]
+    [Required]
     public int TaskId { get; set; }
-    
+
+    [Required]
     public string TaskInfo { get; set; }
-    
+
+    [Required]
     public DateTime DueDate { get; set; }
-    
+
+    [Required]
     public string Quadrant { get; set; }
 
+    [Required]
     [ForeignKey("CategoryId")]
     public int CategoryId { get; set; }
-    public Category Category { get; set; }
-    
-    public bool Completed { get; set; }
+    public Category? Category { get; set; }
+
+ 
+    public bool? Completed { get; set; }
 
 }

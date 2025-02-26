@@ -1,4 +1,4 @@
-﻿@model Task
+﻿@model ToDoTask
 
 <h1>Stephen Covey's Time Management Matrix</h1>
 <p>Use this matrix to prioritize your tasks based on their urgency and importance.</p>
@@ -40,13 +40,13 @@
     </fieldset>
 
     <br />
-    <select asp-for="CategoryId">
-        <option value="">Select a Category</option>
-        @foreach (var c in Model.Categories)
-        {
+    <select asp-for="CategoryId"> 
+        <option value="">Select a Category</option> 
+        @foreach (var c in Model.Categories) 
+        { 
             <option value="@c.CategoryId">@c.CategoryName</option>
         }
-    </select>
+</select>
 
     <br/>
 

@@ -8,6 +8,6 @@ public class EFMission8Repository : IMission8Repository
     {
         _context = temp;
     }
-    public List<Task> Tasks => _context.Tasks.ToList();
+    public List<ToDoTask> Tasks => _context.Tasks.ToList();
     public List<Category> Categories => _context.Categories.ToList();
 }
