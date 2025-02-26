@@ -1,0 +1,47 @@
+@model List<Mission08_Team0104.Models.Task>
+@{
+    Layout = null;
+}
+
+<div class="container">
+    <div class="row">
+        <h3>Stephen Covey's Time Management Matrix</h3>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-4">Urgent</div>
+        <div class="col-4">Not Urgent</div>
+    </div>
+    <div class="row">
+        <div class="col-2">Important</div>
+        <div class="col-4">
+            <h4>Quadrant 1</h4>
+            <p>List of stuff</p>
+        </div>
+        <div class="col-4">
+            <h4>Quadrant 2</h4>
+            <p>List of stuff</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">Not Important</div>
+        <div class="col-4">
+            <h4>Quadrant 3</h4>
+            <p>List of stuff</p>
+        </div>
+        <div class="col-4">
+            <h4>Quadrant 4</h4>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <p>@x.Category</p>
+                    <p>@x.TaskInfo</p>
+                    <p>@x.DueDate</p>
+
+                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskId">Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskId">Delete</a></td>
+                </tr>
+            }
+        </div>
+    </div>
+</div>

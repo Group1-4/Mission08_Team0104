@@ -11,10 +11,17 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Quadrant()
+    {
+        return View(Quadrant);
+    }
 
     public IActionResult AddTask()
     {
         return View();
     }
  // testing
+ //ASD
+ // thingsd
+ // asdff
 }
