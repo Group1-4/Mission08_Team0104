@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0104.Models;
+using SQLitePCL;
 
 namespace Mission08_Team0104.Controllers;
 
@@ -13,7 +14,8 @@ public class HomeController : Controller
     }
     public IActionResult Quadrant()
     {
-        return View(Quadrant);
+        //var tasks = _repo.Tasks.ToList()
+        return View();
     }
 
     public IActionResult AddTask()
