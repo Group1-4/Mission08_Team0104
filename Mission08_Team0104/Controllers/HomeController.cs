@@ -15,9 +15,9 @@ public class HomeController : Controller
     {
         var tasks = _repo.Tasks
             .OrderBy(x => x.Category.CategoryName)
-            .ToList(tasks);
+            .ToList();
 
-        return View();
+        return View(tasks);
     }
 
     [HttpGet]
