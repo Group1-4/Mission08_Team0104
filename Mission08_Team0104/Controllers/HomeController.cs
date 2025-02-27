@@ -20,8 +20,35 @@ public class HomeController : Controller
     {
         return View();
     }
- // testing
- //ASD
- // thingsd
- // asdff
+    // testing
+    //ASD
+    // thingsd
+    // asdff
+
+    //public class HomeController : Controller
+    //{
+    //    private IMission8Repository _repo;
+    //    public HomeController(IMission8Repository temp)
+    //    {
+    //        _repo = temp;
+    //    }
+    //    [HttpGet]
+    //    public IActionResult Index()
+    //    {
+    //        return View(new Quadr);
+    //    }
+
+    //    [HttpPost]
+    //    public IActionResult Index(Manager m)
+    //    {
+    //        if (ModelState.IsValid)
+    //        {
+    //            _repo.AddManager(m);
+    //        }
+    //        return View(new Manager());
+    //    }
+
+    //}
+
+
 }
