@@ -1,56 +1,80 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission08_Team0104.Models;
-using SQLitePCL;
 
 namespace Mission08_Team0104.Controllers;
 
 public class HomeController : Controller
 {
-
-    public IActionResult Index()
+    private IMission8Repository _repo;
+    public HomeController(IMission8Repository temp)
     {
-        return View();
+        _repo = temp;
     }
     public IActionResult Quadrant()
     {
-        //var tasks = _repo.Tasks.ToList()
-        return View();
+        var tasks = _repo.Tasks
+            .OrderBy(x => x.Category.CategoryName)
+            .ToList();
+
+        return View(tasks);
     }
 
+    [HttpGet]
     public IActionResult AddTask()
     {
-        return View();
+        ViewBag.Categories = _repo.Categories
+            .OrderBy(x => x.CategoryName)
+            .ToList();
+
+        return View("AddTask", new ToDoTask());
     }
-    // testing
-    //ASD
-    // thingsd
-    // asdff
 
-    //public class HomeController : Controller
-    //{
-    //    private IMission8Repository _repo;
-    //    public HomeController(IMission8Repository temp)
-    //    {
-    //        _repo = temp;
-    //    }
-    //    [HttpGet]
-    //    public IActionResult Index()
-    //    {
-    //        return View(new Quadr);
-    //    }
+    [HttpPost]
+    public IActionResult AddTask(ToDoTask t)
+    {
+        if (ModelState.IsValid)
+        {
+            _repo.AddTask(t);
+        }
+        return View("Quadrant");
+    }
 
-    //    [HttpPost]
-    //    public IActionResult Index(Manager m)
-    //    {
-    //        if (ModelState.IsValid)
-    //        {
-    //            _repo.AddManager(m);
-    //        }
-    //        return View(new Manager());
-    //    }
+    [HttpGet]
+    public IActionResult Edit(int taskid)
+    {
+        ViewBag.Categories = _repo.Categories
+            .OrderBy(x => x.CategoryName)
+            .ToList();
+        var task = _repo.Tasks
+            .FirstOrDefault(x => x.TaskId == taskid);
+        return View("Quadrant", task);
+    }
 
-    //}
+    [HttpPost]
+    public IActionResult Edit(ToDoTask t)
+    {
+        if (ModelState.IsValid)
+        {
+            _repo.UpdateTask(t);
+        }
+        return View("Quadrant");
+    }
+
+    [HttpGet]
+    public IActionResult Delete(int taskid)
+    {
+        var task = _repo.Tasks
+            .FirstOrDefault(x => x.TaskId == taskid);
+        return View("Quadrant", task);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(ToDoTask t)
+    {
+        _repo.DeleteTask(t);
+        return View("Quadrant");
+    }
 
 
 }
