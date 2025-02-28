@@ -11,6 +11,10 @@ public class HomeController : Controller
     {
         _repo = temp;
     }
+    public IActionResult Index()
+    {
+        return View(); // This should render Views/Home/Index.cshtml
+    }
     public IActionResult Quadrant()
     {
         var tasks = _repo.Tasks
@@ -46,8 +50,9 @@ public class HomeController : Controller
         ViewBag.Categories = _repo.Categories
             .OrderBy(x => x.CategoryName)
             .ToList();
-        var task = _repo.Tasks
-            .FirstOrDefault(x => x.TaskId == taskid);
+        var task = _repo.Tasks.ToList();
+            //.FirstOrDefault(x => x.TaskId == taskid);
+        
         return View("Quadrant", task);
     }
 
@@ -66,7 +71,12 @@ public class HomeController : Controller
     {
         var task = _repo.Tasks
             .FirstOrDefault(x => x.TaskId == taskid);
-        return View("Quadrant", task);
+        if (task != null)
+        {
+            _repo.DeleteTask(task);
+            
+        }
+        return RedirectToAction("Quadrant");
     }
 
     [HttpPost]
