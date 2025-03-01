@@ -21,10 +21,7 @@ public class ToDoTask
     [ForeignKey("CategoryId")]
     public int CategoryId { get; set; }
     public Category? Category { get; set; }
-    
     public bool Completed { get; set; }
-    
     // public List<Category> Categories { get; set; } = new List<Category>();
-    
-
+   
 }
