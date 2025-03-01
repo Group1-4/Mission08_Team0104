@@ -1,7 +1,7 @@
 @model List<Mission08_Team0104.Models.ToDoTask>
-@{
-    //Layout = null;
-}
+@* @{ *@
+@*     Layout = null; *@
+@* } *@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,25 +42,25 @@
         <div class="col-2 side-label">Important</div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 1</h4>
-            @foreach (var task in Model.Where(t => t.Quandrant == "Quadrant 1"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "I"))
             {
                 <div class="mb-2">
-                    <p><strong>@task.TaskInfo</strong></p>
-                    <p>Due: @task.DueDate.ToShortDateString()</p>
-                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
-                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                    <p><strong>@x.TaskInfo</strong></p>
+                    <p>Due: @x.DueDate</p>
+                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskId">Delete</a>
                 </div>
             }
         </div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 2</h4>
-            @foreach (var task in Model.Where(t => t.Quandrant == "Quadrant 2"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "II"))
             {
                 <div class="mb-2">
-                    <p><strong>@task.TaskInfo</strong></p>
-                    <p>Due: @task.DueDate.ToShortDateString()</p>
-                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
-                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                    <p><strong>@x.TaskInfo</strong></p>
+                    <p>Due: @x.DueDate</p>
+                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskId">Delete</a>
                 </div>
             }
         </div>
@@ -71,25 +71,25 @@
         <div class="col-2 side-label">Not Important</div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 3</h4>
-            @foreach (var task in Model.Where(t => t.Quandrant == "Quadrant 3"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "III"))
             {
                 <div class="mb-2">
-                    <p><strong>@task.TaskInfo</strong></p>
-                    <p>Due: @task.DueDate.ToShortDateString()</p>
-                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
-                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                    <p><strong>@x.TaskInfo</strong></p>
+                    <p>Due: @x.DueDate</p>
+                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskId">Delete</a>
                 </div>
             }
         </div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 4</h4>
-            @foreach (var task in Model.Where(t => t.Quandrant == "Quadrant 4"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "IV"))
             {
                 <div class="mb-2">
-                    <p><strong>@task.TaskInfo</strong></p>
-                    <p>Due: @task.DueDate.ToShortDateString()</p>
-                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@task.TaskId">Edit</a>
-                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@task.TaskId">Delete</a>
+                    <p><strong>@x.TaskInfo</strong></p>
+                    <p>Due: @x.DueDate</p>
+                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskId">Delete</a>
                 </div>
             }
         </div>

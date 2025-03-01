@@ -31,7 +31,7 @@ public class HomeController : Controller
             .OrderBy(x => x.CategoryName)
             .ToList();
 
-        return View("AddTask", new ToDoTask());
+        return View(new ToDoTask());
     }
 
     [HttpPost]
@@ -40,8 +40,16 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _repo.AddTask(x);
+            return RedirectToAction("Quadrant");
         }
-        return View("Quadrant");
+        else
+        {
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            return View(x);
+        }
+        
     }
 
     [HttpGet]
@@ -50,10 +58,11 @@ public class HomeController : Controller
         ViewBag.Categories = _repo.Categories
             .OrderBy(x => x.CategoryName)
             .ToList();
-        var task = _repo.Tasks.ToList();
-            //.FirstOrDefault(x => x.TaskId == taskid);
         
-        return View("Quadrant", task);
+        var task = _repo.Tasks.Single(x => x.TaskId == taskid);
+            
+        
+        return View("AddTask", task);
     }
 
     [HttpPost]
@@ -62,8 +71,15 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _repo.UpdateTask(x);
+            return RedirectToAction("Quadrant");
         }
-        return View("Quadrant");
+        else
+        {
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            return View(x);
+        }
     }
 
     [HttpGet]
