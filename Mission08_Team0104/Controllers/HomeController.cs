@@ -6,38 +6,38 @@ namespace Mission08_Team0104.Controllers;
 
 public class HomeController : Controller
 {
-    private IMission8Repository _repo;
-    public HomeController(IMission8Repository temp)
+    private IMission8Repository _repo; // This is the repository that will be used to access the database
+    public HomeController(IMission8Repository temp) // This is the constructor that will be used to inject the repository
     {
         _repo = temp;
     }
-    public IActionResult Index()
+    public IActionResult Index() 
     {
         return View(); // This should render Views/Home/Index.cshtml
     }
-    public IActionResult Quadrant()
+    public IActionResult Quadrant() 
     {
-        var tasks = _repo.Tasks
-            .OrderBy(x => x.Category.CategoryName)
+        var tasks = _repo.Tasks // This should get all tasks from the repository
+            .OrderBy(x => x.Category.CategoryName) 
             .ToList();
 
-        return View(tasks);
+        return View(tasks); // This should render Views/Home/Quadrant.cshtml
     }
 
     [HttpGet]
-    public IActionResult AddTask()
+    public IActionResult AddTask() // This should render Views/Home/AddTask.cshtml
     {
         ViewBag.Categories = _repo.Categories
             .OrderBy(x => x.CategoryName)
             .ToList();
 
-        return View(new ToDoTask());
+        return View(new ToDoTask()); 
     }
 
     [HttpPost]
-    public IActionResult AddTask(ToDoTask x)
+    public IActionResult AddTask(ToDoTask x) // pulls in the ToDoTask object from the form
     {
-        if (ModelState.IsValid)
+        if (ModelState.IsValid) 
         {
             _repo.AddTask(x);
             return RedirectToAction("Quadrant");
@@ -47,13 +47,13 @@ public class HomeController : Controller
             ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
-            return View(x);
+            return View(x); // returns the form with the data that was entered
         }
         
     }
 
     [HttpGet]
-    public IActionResult Edit(int taskid)
+    public IActionResult Edit(int taskid) // grabs the taskid from the URL
     {
         ViewBag.Categories = _repo.Categories
             .OrderBy(x => x.CategoryName)
@@ -62,43 +62,43 @@ public class HomeController : Controller
         var task = _repo.Tasks.Single(x => x.TaskId == taskid);
             
         
-        return View("AddTask", task);
+        return View("AddTask", task); //shows the AddTask view with the task data
     }
 
     [HttpPost]
-    public IActionResult Edit(ToDoTask x)
+    public IActionResult Edit(ToDoTask x) // commits the changes to the database
     {
         if (ModelState.IsValid)
         {
             _repo.UpdateTask(x);
-            return RedirectToAction("Quadrant");
+            return RedirectToAction("Quadrant"); //redirects to the Quadrant view if successful
         }
         else
         {
             ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.CategoryName)
                 .ToList();
-            return View(x);
+            return View(x); // directs to the AddTask view with the task data
         }
     }
 
     [HttpGet]
-    public IActionResult Delete(int taskid)
+    public IActionResult Delete(int taskid) //gets the taskid from the URL
     {
         var task = _repo.Tasks
             .FirstOrDefault(x => x.TaskId == taskid);
         if (task != null)
         {
-            _repo.DeleteTask(task);
-            
+            _repo.DeleteTask(task); //deletes the task from the database
+
         }
-        return RedirectToAction("Quadrant");
+        return RedirectToAction("Quadrant"); //redirects to the Quadrant view
     }
 
     [HttpPost]
-    public IActionResult Delete(ToDoTask x)
+    public IActionResult Delete(ToDoTask x) 
     {
-        _repo.DeleteTask(x);
+        _repo.DeleteTask(x); //deletes the task from the database
         return View("Quadrant");
     }
 
