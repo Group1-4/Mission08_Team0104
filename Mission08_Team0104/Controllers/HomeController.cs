@@ -35,11 +35,11 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddTask(ToDoTask t)
+    public IActionResult AddTask(ToDoTask x)
     {
         if (ModelState.IsValid)
         {
-            _repo.AddTask(t);
+            _repo.AddTask(x);
         }
         return View("Quadrant");
     }
@@ -57,11 +57,11 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Edit(ToDoTask t)
+    public IActionResult Edit(ToDoTask x)
     {
         if (ModelState.IsValid)
         {
-            _repo.UpdateTask(t);
+            _repo.UpdateTask(x);
         }
         return View("Quadrant");
     }
@@ -80,9 +80,9 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Delete(ToDoTask t)
+    public IActionResult Delete(ToDoTask x)
     {
-        _repo.DeleteTask(t);
+        _repo.DeleteTask(x);
         return View("Quadrant");
     }
 
