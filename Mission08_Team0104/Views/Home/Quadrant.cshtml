@@ -1,7 +1,7 @@
 @model List<Mission08_Team0104.Models.ToDoTask>
-@{
-    Layout = null;
-}
+@* @{ *@
+@*     Layout = null; *@
+@* } *@
 
 <div class="container text-center">
     <h3>Stephen Covey's Time Management Matrix</h3>
@@ -16,7 +16,7 @@
         <div class="col-2 fw-bold">Important</div>
         <div class="col-5 border p-3">
             <h4>Quadrant 1</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "Quadrant 1"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "I"))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
@@ -28,7 +28,7 @@
         </div>
         <div class="col-5 border p-3">
             <h4>Quadrant 2</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "Quadrant 2"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "II"))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
@@ -44,7 +44,7 @@
         <div class="col-2 fw-bold">Not Important</div>
         <div class="col-5 border p-3">
             <h4>Quadrant 3</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "Quadrant 3"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "III"))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-5 border p-3">
             <h4>Quadrant 4</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "Quadrant 4"))
+            @foreach (var x in Model.Where(x => x.Quandrant == "IV"))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>

@@ -21,7 +21,7 @@ public class HomeController : Controller
             .OrderBy(x => x.Category.CategoryName)
             .ToList();
 
-        return View(tasks);
+        return View(tasks ?? new List<ToDoTask>());
     }
 
     [HttpGet]
@@ -31,7 +31,7 @@ public class HomeController : Controller
             .OrderBy(x => x.CategoryName)
             .ToList();
 
-        return View("AddTask", new ToDoTask());
+        return View(new ToDoTask());
     }
 
     [HttpPost]
@@ -41,7 +41,7 @@ public class HomeController : Controller
         {
             _repo.AddTask(x);
         }
-        return View("Quadrant");
+        return RedirectToAction("Quadrant");
     }
 
     [HttpGet]

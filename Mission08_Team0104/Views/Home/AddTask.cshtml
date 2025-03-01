@@ -42,7 +42,7 @@
     <br />
     <select asp-for="CategoryId"> 
         <option value="">Select a Category</option> 
-        @foreach (var c in Model.Categories) 
+        @foreach (var c in ViewBag.Categories) 
         { 
             <option value="@c.CategoryId">@c.CategoryName</option>
         }
@@ -50,8 +50,8 @@
 
     <br/>
 
-    <input asp-for="Completed" type="checkbox" id="completed" name="completed" value="completed">
-    <label for="completed">Task Complete?</label><br>
+    <input asp-for="Completed" type="checkbox">
+    <label asp-for="Completed">Task Complete?</label><br>
 
     <input type="submit" value="Add Task" />
 </form>

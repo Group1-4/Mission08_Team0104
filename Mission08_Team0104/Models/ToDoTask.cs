@@ -24,9 +24,9 @@ public class ToDoTask
     public Category? Category { get; set; }
 
  
-    public bool? Completed { get; set; }
+    public bool Completed { get; set; }
     
-    public List<Category> Categories { get; set; } = new List<Category>();
+    // public List<Category> Categories { get; set; } = new List<Category>();
     
 
 }
