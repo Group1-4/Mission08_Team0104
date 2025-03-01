@@ -21,7 +21,7 @@ public class HomeController : Controller
             .OrderBy(x => x.Category.CategoryName)
             .ToList();
 
-        return View(tasks ?? new List<ToDoTask>());
+        return View(tasks);
     }
 
     [HttpGet]
@@ -40,8 +40,16 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _repo.AddTask(x);
+            return RedirectToAction("Quadrant");
         }
-        return RedirectToAction("Quadrant");
+        else
+        {
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+            return View(x);
+        }
+        
     }
 
     [HttpGet]

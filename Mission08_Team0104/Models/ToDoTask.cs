@@ -5,8 +5,7 @@ namespace Mission08_Team0104.Models;
 
 public class ToDoTask
 {
-    [Key]
-    [Required]
+    [Key] [Required] 
     public int TaskId { get; set; }
 
     [Required]
