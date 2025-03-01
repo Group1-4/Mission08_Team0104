@@ -42,7 +42,7 @@
         <div class="col-2 side-label">Important</div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 1</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "I"))
+                @foreach (var x in Model.Where(x => x.Quandrant == "I" && !x.Completed))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
@@ -54,7 +54,7 @@
         </div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 2</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "II"))
+                @foreach (var x in Model.Where(x => x.Quandrant == "II" && !x.Completed))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
@@ -71,7 +71,7 @@
         <div class="col-2 side-label">Not Important</div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 3</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "III"))
+                @foreach (var x in Model.Where(x => x.Quandrant == "III" && !x.Completed))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
@@ -83,7 +83,7 @@
         </div>
         <div class="col-5 matrix-box">
             <h4>Quadrant 4</h4>
-            @foreach (var x in Model.Where(x => x.Quandrant == "IV"))
+                @foreach (var x in Model.Where(x => x.Quandrant == "IV" && !x.Completed))
             {
                 <div class="mb-2">
                     <p><strong>@x.TaskInfo</strong></p>
