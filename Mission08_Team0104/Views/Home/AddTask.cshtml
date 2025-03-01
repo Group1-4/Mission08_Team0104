@@ -16,42 +16,35 @@
     <input type="date" asp-for="DueDate" />
     <br />
     <fieldset>
-        <legend asp-for="Quadrant">Quadrant:</legend>
+        <legend asp-for="Quandrant">Quadrant:</legend>
 
-        <div>
-            <input type="radio" id="I" name="drone" value="I" checked />
-            <label for="I">I</label>
-        </div>
-
-        <div>
-            <input type="radio" id="II" name="drone" value="II" />
-            <label for="II">II</label>
-        </div>
-
-        <div>
-            <input type="radio" id="III" name="drone" value="III" />
-            <label for="III">III</label>
-        </div>
-
-        <div>
-            <input type="radio" id="IV" name="drone" value="IV" />
-            <label for="IV">IV</label>
-        </div>
+        <select asp-for="Quandrant">
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+        </select>
     </fieldset>
 
+
+
+
+
     <br />
+
     <select asp-for="CategoryId"> 
         <option value="">Select a Category</option> 
         @foreach (var c in ViewBag.Categories) 
         { 
             <option value="@c.CategoryId">@c.CategoryName</option>
         }
-</select>
+    </select>
 
     <br/>
 
-    <input asp-for="Completed" type="checkbox" id="completed" name="completed" value="completed">
-    <label for="completed">Task Complete?</label><br>
+    <input asp-for="Completed" type="checkbox">
+    <label asp-for="Completed">Task Complete?</label><br>
 
     <input type="submit" value="Add Task" />
 </form>
+<div asp-validation-summary="All"></div>
