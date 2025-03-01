@@ -17,12 +17,11 @@ public class ToDoTask
     [Required]
     public string Quandrant { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Select a category")]
     [ForeignKey("CategoryId")]
     public int CategoryId { get; set; }
     public Category? Category { get; set; }
-
- 
+    
     public bool Completed { get; set; }
     
     // public List<Category> Categories { get; set; } = new List<Category>();
