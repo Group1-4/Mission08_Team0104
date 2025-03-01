@@ -10,7 +10,7 @@ public class EFMission8Repository : IMission8Repository
     {
         _context = temp;
     }
-    public List<ToDoTask> Tasks => _context.Tasks.ToList();
+    public List<ToDoTask> Tasks => _context.Tasks.Include(c => c.Category).ToList();
     public List<Category> Categories => _context.Categories.ToList();
     public void AddTask(ToDoTask toDoTask)
     {
