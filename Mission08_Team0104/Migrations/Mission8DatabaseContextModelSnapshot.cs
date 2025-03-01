@@ -27,12 +27,17 @@ namespace Mission08_Team0104.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("ToDoTaskTaskId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CategoryId");
+
+                    b.HasIndex("ToDoTaskTaskId");
 
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Mission08_Team0104.Models.Task", b =>
+            modelBuilder.Entity("Mission08_Team0104.Models.ToDoTask", b =>
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
@@ -41,13 +46,13 @@ namespace Mission08_Team0104.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Completed")
+                    b.Property<bool?>("Completed")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quandrant")
+                    b.Property<string>("Quadrant")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -62,7 +67,14 @@ namespace Mission08_Team0104.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Mission08_Team0104.Models.Task", b =>
+            modelBuilder.Entity("Mission08_Team0104.Models.Category", b =>
+                {
+                    b.HasOne("Mission08_Team0104.Models.ToDoTask", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("ToDoTaskTaskId");
+                });
+
+            modelBuilder.Entity("Mission08_Team0104.Models.ToDoTask", b =>
                 {
                     b.HasOne("Mission08_Team0104.Models.Category", "Category")
                         .WithMany()
@@ -71,6 +83,11 @@ namespace Mission08_Team0104.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Mission08_Team0104.Models.ToDoTask", b =>
+                {
+                    b.Navigation("Categories");
                 });
 #pragma warning restore 612, 618
         }

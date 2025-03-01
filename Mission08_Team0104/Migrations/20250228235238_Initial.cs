@@ -17,7 +17,8 @@ namespace Mission08_Team0104.Migrations
                 {
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CategoryName = table.Column<string>(type: "TEXT", nullable: false)
+                    CategoryName = table.Column<string>(type: "TEXT", nullable: false),
+                    ToDoTaskTaskId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,9 +33,9 @@ namespace Mission08_Team0104.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     TaskInfo = table.Column<string>(type: "TEXT", nullable: false),
                     DueDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Quandrant = table.Column<string>(type: "TEXT", nullable: false),
+                    Quadrant = table.Column<string>(type: "TEXT", nullable: false),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Completed = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Completed = table.Column<bool>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,14 +49,30 @@ namespace Mission08_Team0104.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Categories_ToDoTaskTaskId",
+                table: "Categories",
+                column: "ToDoTaskTaskId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tasks_CategoryId",
                 table: "Tasks",
                 column: "CategoryId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Categories_Tasks_ToDoTaskTaskId",
+                table: "Categories",
+                column: "ToDoTaskTaskId",
+                principalTable: "Tasks",
+                principalColumn: "TaskId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Categories_Tasks_ToDoTaskTaskId",
+                table: "Categories");
+
             migrationBuilder.DropTable(
                 name: "Tasks");
 

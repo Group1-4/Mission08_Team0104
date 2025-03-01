@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Mission08_Team0104.Models;
 
 public class EFMission8Repository : IMission8Repository
@@ -10,4 +12,23 @@ public class EFMission8Repository : IMission8Repository
     }
     public List<ToDoTask> Tasks => _context.Tasks.ToList();
     public List<Category> Categories => _context.Categories.ToList();
+    public void AddTask(ToDoTask toDoTask)
+    {
+        _context.Tasks.Add(toDoTask);
+        _context.SaveChanges();
+    }
+
+    public void UpdateTask(ToDoTask toDoTask)
+    {
+        _context.Tasks.Update(toDoTask);
+        _context.SaveChanges();
+    }
+
+
+    public void DeleteTask(ToDoTask toDoTask)
+    {
+        _context.Tasks.Remove(toDoTask);
+        _context.SaveChanges();
+        
+    }
 }

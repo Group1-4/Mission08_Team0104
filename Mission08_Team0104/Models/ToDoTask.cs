@@ -16,7 +16,7 @@ public class ToDoTask
     public DateTime DueDate { get; set; }
 
     [Required]
-    public string Quadrant { get; set; }
+    public string Quandrant { get; set; }
 
     [Required]
     [ForeignKey("CategoryId")]
@@ -24,6 +24,9 @@ public class ToDoTask
     public Category? Category { get; set; }
 
  
-    public bool? Completed { get; set; }
+    public bool Completed { get; set; }
+    
+    //public List<Category> Categories { get; set; } = new List<Category>();
+    
 
 }
