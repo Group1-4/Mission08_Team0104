@@ -16,7 +16,7 @@ public class ToDoTask
     public DateTime DueDate { get; set; }
 
     [Required]
-    public string Quadrant { get; set; }
+    public string Quandrant { get; set; }
 
     [Required]
     [ForeignKey("CategoryId")]

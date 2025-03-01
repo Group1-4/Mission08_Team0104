@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Mission08_Team0104.Models;
 
 public class EFMission8Repository : IMission8Repository
